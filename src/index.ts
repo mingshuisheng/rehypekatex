@@ -37,8 +37,11 @@ export default function rehypeKatex() {
       const index = parent.children.indexOf(scope);
       parent.children.splice(index, 1, {
         type: "element",
-        properties: { innerHTML: katex.renderToString(text.trim()) },
-        tagName: "div",
+        properties: {
+          innerHTML: katex.renderToString(text.trim()),
+          class: "rehype-katex-root",
+        },
+        tagName: "span",
       });
       return SKIP;
     });
